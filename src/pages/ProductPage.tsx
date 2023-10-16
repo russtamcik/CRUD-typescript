@@ -12,16 +12,15 @@ export const ProductPage = () => {
   const dispatch = useAppDispatch();
 
   const params = useParams();
-  const [index, setIndex] = useState();
+  const [index] = useState(params.id);
 
   const [selected, setSelected] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
 
   useEffect(() => {
-    setIndex(params.id);
     dispatch(getProduct(index));
-  }, [dispatch, params, index]);
+  }, [dispatch, index]);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -62,7 +61,7 @@ export const ProductPage = () => {
   const deleteProduct = async (id: string) => {
     try {
       await request.delete(`category/${params.id}/product/${id}`);
-      dispatch(getProduct(index));  
+      dispatch(getProduct(index));
     } catch (err) {
       console.log(err);
     }
