@@ -1,5 +1,6 @@
 import { Button, Card } from "antd";
 import { ProductCardProps } from "../../types/product";
+import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 
 const { Meta } = Card;
 
@@ -35,12 +36,14 @@ const ProductCard = ({
       style={{ margin: "10px" }}
     >
       <Meta title={name} style={{ marginBottom: "20px" }} />
-      <p>{description}</p>
-      <p>{discount}</p>
-      <p>{price}</p>
-      <Button onClick={handleEdit}>Edit</Button>
+      <h3>{price} $</h3>
+      <h4>{discount}</h4>
+      <h5>{description}</h5>
+      <Button onClick={handleEdit}>
+        <EditTwoTone />
+      </Button>
       <Button danger onClick={handleDelete}>
-        Delete
+        <DeleteTwoTone />
       </Button>
     </Card>
   );

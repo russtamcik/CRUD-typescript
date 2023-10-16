@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { ProductCardProps } from "../types/product";
 import request from "../server";
 import { getProduct } from "../redux/slices/productSlice";
+import { FolderAddTwoTone } from "@ant-design/icons";
+
 
 export const ProductPage = () => {
   const { products, loading } = useAppSelector((state) => state.product);
@@ -74,7 +76,7 @@ export const ProductPage = () => {
       <Flex justify="space-between">
         <h1>Products ({products.length})</h1>
         <Button onClick={showModal} className="primary">
-          Add
+          <FolderAddTwoTone />
         </Button>
       </Flex>
       <Spin spinning={loading}>
@@ -114,6 +116,27 @@ export const ProductPage = () => {
           <Form.Item<ProductCardProps>
             label="Name"
             name="name"
+            rules={[{ required: true, message: "Please fill!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item<ProductCardProps>
+            label="Price"
+            name="price"
+            rules={[{ required: true, message: "Please fill!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item<ProductCardProps>
+            label="Discount"
+            name="discount"
+            rules={[{ required: true, message: "Please fill!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item<ProductCardProps>
+            label="Description"
+            name="description"
             rules={[{ required: true, message: "Please fill!" }]}
           >
             <Input />
