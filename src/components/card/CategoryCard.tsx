@@ -1,3 +1,4 @@
+import { DeleteFilled, EditFilled } from "@ant-design/icons";
 import { Button, Card } from "antd";
 import { Link } from "react-router-dom";
 
@@ -40,9 +41,11 @@ const CategoryCard = ({
       style={{ margin: "10px" }}
     >
       <Meta title={name} style={{ marginBottom: "20px" }} />
-      <Button onClick={handleEdit}>Edit</Button>
+      <Button onClick={handleEdit}>
+        <EditFilled />
+      </Button>
       <Button danger onClick={handleDelete}>
-        Delete
+        <DeleteFilled />
       </Button>
       <Button>
         <Link to={`/product/${id}`}>Products</Link>
